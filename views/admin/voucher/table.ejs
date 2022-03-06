@@ -25,16 +25,16 @@
                 <td>
                     <% if(voucher[i].status === 'Y'){ %> 
                         <span class="badge badge-success">
-                            Aktif
+                            Active
                         </span>
                     <% } else { %>
                         <span class="badge badge-danger">
-                            Tidak Aktif
+                            Not Active
                         </span>
                     <% }  %> 
                 </td>
                 <td>
-                    <form style="display: inline-block;">
+                    <form action="/voucher/status/<%= voucher[i]._id %>?_method=PUT" method="post" style="display: inline-block;">
                         <% if(voucher[i].status === 'Y'){ %> 
                             <button class="btn btn-dark btn-sm">
                                 <i class="fas fa-folder"></i>
