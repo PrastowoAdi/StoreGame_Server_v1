@@ -11,7 +11,8 @@ module.exports = {
 
             if(req.session.user === null || req.session.user === undefined){
                 res.render('admin/user/view_signIn', {
-                    alert
+                    alert,
+                    title: 'SIGNIN'
                 })
             } else {
                 res.redirect('/dashboard');
@@ -35,9 +36,9 @@ module.exports = {
                     if(checkPassword){
                         req.session.user = {
                             id: check._id,
-                            email: check._email,
-                            status: check._status,
-                            name: check._name,
+                            email: check.email,
+                            status: check.status,
+                            name: check.name,
                         }
                         res.redirect('/dashboard');
                     } else {
@@ -60,6 +61,10 @@ module.exports = {
             req.flash('alertStatus', 'danger');
             res.redirect('/');
         }
+    },
+    actionLogout : (req, res) => {
+        req.session.destroy();
+        res.redirect('/');
     }
 
 }
