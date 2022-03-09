@@ -1,0 +1,126 @@
+module.exports = {
+    viewSigning: async(req, res) => {
+        try {
+            // const alertMessage = req.flash("alertMessage");
+            // const alertStatus = req.flash("alertStatus");
+
+            // const alert = { message: alertMessage, status: alertStatus}
+            
+
+            res.render('admin/user/view_signIn')
+        } catch (err) {
+            req.flash('alertMessage', `${err.message}`);
+            req.flash('alertStatus', 'danger');
+            res.redirect('/signIn');
+        }
+    },
+    // viewCreate : async(req, res) => {
+    //     try {
+    //         const banks = await Bank.find();
+    //         res.render('admin/payment/create', {
+    //             banks
+    //         });
+    //     } catch (err) {
+    //         req.flash('alertMessage', `${err.message}`);
+    //         req.flash('alertStatus', 'danger');
+    //         res.redirect('/payment');
+    //     }
+    // },
+
+    // actionCreate : async(req, res) => {
+    //     try {
+    //         const { type, banks } = req.body
+    //         let payment = await Payment({ type, banks });
+    //         await payment.save();
+
+    //         req.flash("alertMessage", "Success Add Payment");
+    //         req.flash("alertStatus", "success");
+
+    //         res.redirect('/payment');
+
+    //     } catch (error) {
+    //         req.flash('alertMessage', `${err.message}`);
+    //         req.flash('alertStatus', 'danger');
+    //         res.redirect('/payment');
+    //     }
+    // },
+
+    // viewEdit : async(req, res) => {
+    //     try {
+    //         const { id } = req.params;
+    //         const payment = await Payment.findOne({ _id : id }).populate('banks');
+    //         const banks = await Bank.find();
+
+    //         res.render('admin/payment/edit', {
+    //             payment,
+    //             banks
+    //         })
+
+    //     } catch (err) {
+    //         req.flash('alertMessage', `${err.message}`);
+    //         req.flash('alertStatus', 'danger');
+    //         res.redirect('/payment');
+    //     }
+    // },
+    
+    // actionEdit: async(req, res) => {
+    //     try {
+    //         const { id } = req.params;
+    //         const { type, banks } = req.body;
+
+    //         await Payment.findOneAndUpdate({
+    //             _id: id
+    //         }, { type, banks });
+
+    //         req.flash("alertMessage", "Success Edit Payment");
+    //         req.flash("alertStatus", "success");
+            
+    //         res.redirect('/payment');
+    //     } catch (err) {
+    //         req.flash('alertMessage', `${err.message}`);
+    //         req.flash('alertStatus', 'danger');
+    //         res.redirect('/payment');
+    //     }
+    // },
+
+    // actionDelete: async(req, res) => {
+    //     try {
+    //         const { id } = req.params;
+
+    //         await Payment.findOneAndRemove({
+    //             _id: id
+    //         });
+
+    //         req.flash("alertMessage", "Success Delete Payment");
+    //         req.flash("alertStatus", "success");
+
+    //         res.redirect('/payment');
+    //     } catch (err) {
+    //         req.flash('alertMessage', `${err.message}`);
+    //         req.flash('alertStatus', 'danger');
+    //         res.redirect('/payment');
+    //     }
+    // },
+
+    // actionStatus: async(req, res) => {
+    //     try {
+    //         const { id } = req.params;
+    //         let payment = await Payment.findOne({_id: id});
+
+    //         let status = payment.status === 'Y' ? 'N' : 'Y';
+
+    //         payment = await Payment.findOneAndUpdate({
+    //             _id: id
+    //         }, {status});
+
+    //         req.flash("alertMessage", "Success edit status");
+    //         req.flash("alertStatus", "success");
+
+    //         res.redirect('/payment');
+    //     } catch (err) {
+    //         req.flash('alertMessage', `${err.message}`);
+    //         req.flash('alertStatus', 'danger');
+    //         res.redirect('/payment');            
+    //     }
+    // }
+}
