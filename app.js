@@ -17,6 +17,7 @@ const userRouter = require('./app/user/router');
 const transactionRouter = require('./app/transaction/router');
 
 const playerRouter = require('./app/player/router');
+const authRouter = require('./app/auth/router');
 
 
 
@@ -52,6 +53,7 @@ app.use('/transaction', transactionRouter);
 
 //API
 app.use(`${URL}/players`, playerRouter);
+app.use(`${URL}/auth`, authRouter);
 
 
 // catch 404 and forward to error handler
