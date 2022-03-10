@@ -3,9 +3,10 @@ var router = express.Router();
 const multer = require('multer');
 const os = require('os');
 
-const {signup} = require('./controller');
+const {signup, signin} = require('./controller');
 
 router.post('/signup', multer({dest: os.tmpdir()}).single('image'), signup);
+router.post('/signin', signin);
 
 
 
