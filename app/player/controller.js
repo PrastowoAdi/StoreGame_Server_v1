@@ -240,7 +240,28 @@ module.exports = {
             res.status(200).json({
                 data: history, count
             })
-            
+
+        } catch (err) {
+            res.status(500).json({
+                message: err.message || `Internal Server Error`
+            })
+        }
+    },
+
+    profile: async (req, res) => {
+        try {
+            const player = {
+                id: req.player._id,
+                username: req.player.username,
+                name: req.player.name,
+                avatar: req.player.avatar,
+                phone: req.player.phoneNumber,
+            }
+
+            res.status(200).json({
+                data: player
+            })
+
         } catch (err) {
             res.status(500).json({
                 message: err.message || `Internal Server Error`
