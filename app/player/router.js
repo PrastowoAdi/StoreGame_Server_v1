@@ -1,6 +1,9 @@
 var express = require('express');
 var router = express.Router();
-const { landingPage, detailPage, category, checkout, history, historyDetail, dashboard, profile } = require('./controller');
+const multer = require('multer');
+const os = require('os');
+
+const { landingPage, detailPage, category, checkout, history, historyDetail, dashboard, profile, editProfile } = require('./controller');
 const { isLoginPlayer } = require('../middleware/auth')
 router.get('/landingpage', landingPage);
 router.get('/:id/detail', detailPage);
@@ -10,5 +13,6 @@ router.get('/history', isLoginPlayer ,history);
 router.get('/:id/history', isLoginPlayer, historyDetail);
 router.get('/dashboard', isLoginPlayer ,dashboard);
 router.get('/profile', isLoginPlayer ,profile);
+router.put('/profile', isLoginPlayer ,multer({dest: os.tmpdir()}).single('image'), editProfile);
 
 module.exports = router;
