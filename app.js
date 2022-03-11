@@ -20,9 +20,11 @@ const playerRouter = require('./app/player/router');
 const authRouter = require('./app/auth/router');
 
 
-
+var cors = require('cors')
 const app = express();
 const URL = `/api/v1`;
+app.use(cors());
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');

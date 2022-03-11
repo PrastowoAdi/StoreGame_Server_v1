@@ -66,7 +66,6 @@ module.exports = {
         try {
             const {
                 accountUser,
-                name,
                 nominal,
                 voucher,
                 payment,
@@ -119,7 +118,7 @@ module.exports = {
                     bankName: res_bank._doc.bankName,
                     noRekening: res_bank._doc.noRekening,
                 },
-                name : name,
+                name : req.player.name,
                 accountUser: accountUser,
                 tax : tax,
                 value : value,
