@@ -41,9 +41,11 @@ module.exports = {
             }    
             res.status(200).json({
                 data : {
-                    detail: {
-                        payment,
+                    details: {
                         voucher
+                    },
+                    payment: {
+                        payment
                     }
                 }
             })
