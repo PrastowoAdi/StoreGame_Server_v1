@@ -27,6 +27,7 @@ module.exports = {
     detailPage: async(req, res) => {
         try {
             const { id } = req.params;
+            const payment = await Payment.find().populate('banks');
             const voucher = await Voucher.find({
                 _id : id
             })
@@ -39,7 +40,12 @@ module.exports = {
                 })    
             }    
             res.status(200).json({
-                data : voucher
+                data : {
+                    detail: {
+                        payment,
+                        voucher
+                    }
+                }
             })
 
         } catch (err) {
