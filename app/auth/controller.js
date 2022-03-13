@@ -4,12 +4,15 @@ const fs = require('fs');
 const config = require('../../config');
 const bcrypt  = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const { uploadFile, getFileStream } = require('./s3');
 
 module.exports = {
     signup : async (req, res, next) => {
         try {
             const payload = req.body;
             if(req.file){
+                const fileAWS = req.file;
+                
                 let tmp_path = req.file.path;
                 let originaExt = req.file.originalname.split('.')[req.file.originalname.split('.').length-1];
                 let filename = req.file.filename + '.' + originaExt;
@@ -20,13 +23,17 @@ module.exports = {
 
                 src.pipe(dest)
 
+                
+
                 src.on('end', async () => {
                     try {
+                        const result = await uploadFile(fileAWS);
+
                         const player = new Player({
                            ...payload,
-                            avatar: filename
+                            avatar: result.Location
                         })
-
+                        
                         await player.save()
 
                         delete player._doc.password
