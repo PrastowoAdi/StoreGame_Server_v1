@@ -248,7 +248,10 @@ module.exports = {
             })
 
             res.status(200).json({
-                data: history, count
+                data: {
+                    history, 
+                    count
+                }
             })
 
         } catch (err) {
